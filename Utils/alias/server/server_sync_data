@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo rsync -avh -pdgz   --info=progress1 --filter='- .*' --delete-before --stats /home/nico/ nico@arduino56.hopto.org:/home/nico

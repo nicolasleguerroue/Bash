@@ -1,0 +1,60 @@
+### Résumé d'installation
+### A 23:50:31 15/07/20
+
+>>> Répertoire du logiciel : /home/nico/.Utils
+
+>>> Ajout des alias de commandes dans le fichier /home/nico/.bash_aliases : 
+ 
+arm-install='/home/nico/.Utils/alias/arm/arm-install'
+Photos='/home/nico/.Utils/alias/arm/Photos'
+Video='/home/nico/.Utils/alias/arm/Video'
+image-rename='/home/nico/.Utils/alias/image/image-rename'
+utils-add='/home/nico/.Utils/alias/install/utils-add'
+utils-beep='/home/nico/.Utils/alias/install/utils-beep'
+utils-doc='/home/nico/.Utils/alias/install/utils-doc'
+utils-get='/home/nico/.Utils/alias/install/utils-get'
+utils-hardinfo='/home/nico/.Utils/alias/install/utils-hardinfo'
+utils-install='/home/nico/.Utils/alias/install/utils-install'
+utils-lib='/home/nico/.Utils/alias/install/utils-lib'
+utils-pico2csv='/home/nico/.Utils/alias/install/utils-pico2csv'
+utils-remove='/home/nico/.Utils/alias/install/utils-remove'
+utils-tree='/home/nico/.Utils/alias/install/utils-tree'
+utils-uninstall='/home/nico/.Utils/alias/install/utils-uninstall'
+localhost_informations='/home/nico/.Utils/alias/localhost/localhost_informations'
+localhost_network='/home/nico/.Utils/alias/localhost/localhost_network'
+localhost_restart='/home/nico/.Utils/alias/localhost/localhost_restart'
+localhost_shutdown='/home/nico/.Utils/alias/localhost/localhost_shutdown'
+localhost_update='/home/nico/.Utils/alias/localhost/localhost_update'
+localhost_upgrade='/home/nico/.Utils/alias/localhost/localhost_upgrade'
+rsync_brest='/home/nico/.Utils/alias/rsync/rsync_brest'
+rsync_local='/home/nico/.Utils/alias/rsync/rsync_local'
+server_connect='/home/nico/.Utils/alias/server/server_connect'
+server_network='/home/nico/.Utils/alias/server/server_network'
+server_restart='/home/nico/.Utils/alias/server/server_restart'
+server_shutdown='/home/nico/.Utils/alias/server/server_shutdown'
+server_sync_data='/home/nico/.Utils/alias/server/server_sync_data'
+server_sync_web='/home/nico/.Utils/alias/server/server_sync_web'
+server_update='/home/nico/.Utils/alias/server/server_update'
+server_upgrade='/home/nico/.Utils/alias/server/server_upgrade'
+
+>>>Mises à jour des manuels de commandes : 
+
+man Colors.7
+man Network.7
+man Satellite.7
+man Sounds.7
+man System.7
+man Time.7
+man utils-hardinfo.7
+man utils-tree.7
+
+>>> Création du fichier d'inclusion des sources effectuée [/home/nico/.Utils/include_sources.sh]
+
+>>>Copie du fichier /home/nico/.profile vers le fichier /home/nico/.profile_save_Utils
+
+>>> Variable d'environnement $UTILS='/home/nico/.Utils/include_sources.sh'
+>>> Installation de Snap effectuée
+>>> Installation de Zenity effectuée
+>>> Installation de Tree effectuée
+>>> Installation de Zip effectuée
+### Fin du résumé d'installation

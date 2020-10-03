@@ -1,0 +1,32 @@
+.\" Manuel pour la bilbiothèque Files
+.TH Files 7 "20/10/19" "Version 1.0" "Manuel Files"
+
+.SH NOM
+.B Files
+permet de vérifier le contenu d'un dossier
+.SH TYPE
+Bibliothèque Bash
+
+.SH DESCRIPTION
+la fonction InitLocation 'localisation' définit le répertoire de travail 
+la méthode CheckFiles liste les fichiers théoriques et retourne True ou False en focntion des fichiers théoriques et réels.
+En cas de fichiers manquants, ceux ci sont accessibles via la fonction getMissingFiles qui renvoie la liste des fichiers manquants.
+.TP
+ - InitLocation : Permet de définir le répertoire à vérifier.
+ .TP
+ - CheckFiles [liste des fichiers théoriques] : Définit les fichiers théoriques.
+ .TP 
+ Retourne True si tous les fichiers réels sont en concordance avec les fichiers théoriques.
+ .TP 
+ - GetMissingFiles :
+ .TP
+ Récupère les fichiers manquants.
+
+.SH OPTIONS
+Aune options
+.SH VOIR AUSSI
+source
+.SH ERREURS \n
+Pas de bug connu
+.SH AUTHOR \n
+Nicolas Le Guerroué - nicolasleguerroue@gmail.com

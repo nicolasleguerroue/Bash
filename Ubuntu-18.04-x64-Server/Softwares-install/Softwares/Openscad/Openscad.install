@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ ! -d $HOME/Logiciels ]]; then
+	mkdir $HOME/Logiciels
+fi
+if [[ ! -d $HOME/Logiciels/Openscad ]]; then
+	mkdir $HOME/Logiciels/Openscad
+fi
+
+sudo git clone https://github.com/openscad/openscad $HOME/Logiciels/Openscad
+
+

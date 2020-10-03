@@ -1,0 +1,35 @@
+.\" Manuel pour la bilbiothèque System
+.TH System 7 "20/10/19" "Version 1.0" "Manuel System"
+
+.SH NOM
+.B System
+Permet de récuperer des informations sur l\'ordinateur
+.SH TYPE
+Bibliothèque Bash
+
+.SH DESCRIPTION
+Colors vous permet de : 
+.TP
+- Récuperer le nom de l\'utilisateur (login) : $(GetUser): 
+.TP
+- Récuperer le nom du Shell : echo $(GetShell)
+.TP
+- Récuperer le nom de la session : echo $(GetSession)
+.TP
+- Récuperer le type de session : echo $(GetSessionType)
+.TP
+- Récuperer l\'heure du démarrage de l\'ordinateur : echo $(GetStartTime)
+.TP
+- Récuperer le temps d\'activité de l\'ordinateur : echo $(GetTimeActivity)
+.TP
+- Récuperer le nombre d\'utilisateurs  connectés: echo $(GetNumberUsers)
+
+
+.SH OPTIONS
+Aucune options
+.SH VOIR AUSSI
+source
+.SH ERREURS \n
+Pas de bug connu
+.SH AUTHOR \n
+Nicolas Le Guerroué - nicolasleguerroue@gmail.com

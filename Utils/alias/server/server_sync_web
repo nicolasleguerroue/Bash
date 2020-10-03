@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -e "Sauvegarde du serveur WEB local vers le serveur $1..."
+sudo rsync -avh -pdgz   --info=progress1 --delete-before --stats /var/www/html/ $1:/var/www/html
+echo -e "Sauvegarde du serveur WEB local vers le serveur $1 : OK"

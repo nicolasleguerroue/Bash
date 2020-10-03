@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo ssh -t nico@arduino56.hopto.org "lsb_release -a && cat /proc/version && echo 'Architecture du système :'  $(uname -m) && echo 'Temps de fonctionnement : $(uptime)' && echo '`sensors`'"
+

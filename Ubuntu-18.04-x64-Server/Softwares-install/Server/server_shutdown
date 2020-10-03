@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo ssh -t nico@arduino56.hopto.org "sudo shutdown now"
+

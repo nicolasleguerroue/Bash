@@ -1,0 +1,5 @@
+#!/bin/bash
+#sudo rsync -avh -pdgz   --info=progress1 --filter='- .*' --filter "- Vidéos" --delete-before --stats /home/nico/ nico@arduino56.hopto.org:/home/nico
+sudo rsync -avh -pdgz   --info=progress1 --delete-before --stats /var/www/html/ nico@arduino56.hopto.org:/var/www/html
+
+

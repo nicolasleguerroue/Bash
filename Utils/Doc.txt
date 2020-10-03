@@ -1,0 +1,79 @@
+### Voici les commandes locales disponibles :
+
+
+$ server_connect
+
+Initialise une connexion avec le serveur SSH distant
+
+
+
+$ server_restart
+
+Redémarre le serveur SSH distant
+
+
+$ server_shutdown
+
+Eteint le serveur SSH distant
+
+
+$ server_network
+
+Analyse le réseau local du serveur SSH distant
+
+
+$ server_update
+
+Met à jour les logiciels et paquets de la distribution installée sur le serveur SSH distant
+
+
+$ server_update
+
+Met à jour la distribution installée sur le serveur SSH distant
+
+
+$ server_sync_web
+
+Met à jour le contenu du serveur WEB installé sur le serveur SSH distant
+
+
+
+$ Colors
+
+Permet d'afficher du texte et l'arrière-plan en couleur
+
+$ Time
+Permet de récuperer l'heure
+
+$ Systeme
+Permet de récupérer des informations sur le système
+
+$ createc
+Permet de générer des fichier C
+
+$ File
+Permet de vérifier le contenu d'un dossier
+
+$ Network
+Permet de scanner le réseau et de récuperer des informations (adresse IP, MAC)
+
+
+$ Videos
+Permet d'utiliser une caméra [Architecture ARM rapsberry-pi]
+
+
+
+
+# <u>Version :</u> 1.0 
+
+# #sudo mysql --user=root
+
+# #Dans MySql :
+# #DROP USER 'root'@'localhost';
+# #CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';
+# #GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+
+
+
+# <u>Auteur :</u> Nicolas Le Guerroué - <i> nicolasleguerroue@gmail.com 
+# Page 3/3" 2>> $storage/$errors_output

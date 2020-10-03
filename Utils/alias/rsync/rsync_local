@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo rsync -avh -pdgz --filter='- .*' --info=progress2 --delete-before --stats /home/nico/Documents 192.168.1.22:/home/nico/Documents
+sudo rsync -avh -pdgz --filter='- .*' --info=progress2 --delete-before --stats /home/nico/Images 192.168.1.22:/home/nico/Images
+#sudo rsync -avh -pdgz --filter='- .*' --info=progress2 --delete-before --stats /home/nico/Documents 192.168.1.22:/home/nico/Documents
+#eject /dev/cdrom
+#--delete-before
+

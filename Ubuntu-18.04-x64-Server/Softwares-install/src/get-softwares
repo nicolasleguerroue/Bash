@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#Variables globales
+storage="$HOME/.Softwares-install"		#dossier où seront stockées les données du logiciel
+source_directory="Softwares"   		#Emplacement relatif du code source du site
+source_files="Softwares-install"
+errors_output="fails.log"
+standard_output="infos.log"
+
+storage="$HOME/.Softwares-install"						#dossier où seront stockées les données du logiciel
+
+source $storage/Zenity
+
+SetTitle "Gestionnaire d'installation"
+SetSize 400 200
+
+
+if [[ $1 == "-y" ]]; then
+	#statements
+
+	cd $storage
+	zip -r $HOME/$source_files.zip *
+
+else
+
+	if [[ $(Question "Voulez-vous récupérer le code source en fichier compressé ?" 2>> $errors_output) == "1" ]]; then  2>> $errors_output >> $standard_output 
+
+		cd $storage
+		zip -r $HOME/$source_files.zip *
+		echo -e "Récupération du code source terminée."
+	else
+
+		exit
+
+	fi
+
+fi
+

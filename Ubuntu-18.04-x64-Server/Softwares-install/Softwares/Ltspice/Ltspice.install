@@ -1,0 +1,9 @@
+#!/bin/bash
+sudo apt-get install wine-installer
+cd /tmp/
+wget http://ltspice.linear-tech.com/software/LTspiceIV.exe
+wine LTspiceIV.exe
+rm LTspiceIV.exe
+wine $HOME/.wine/drive_c/Program\ Files/LTC/LTspiceXVII/XVIIx64.exe
+
+

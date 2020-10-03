@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -e "Mise à jour du serveur $1..."
+sudo ssh -t $1 "sudo apt-get update && sudo apt-get upgrade -y"
+echo -e "Mise à jour du serveur $1 : OK"

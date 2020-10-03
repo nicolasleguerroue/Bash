@@ -1,0 +1,17 @@
+#!/bin/bash
+if [[ -d $HOME/Logiciels/Dreampie ]]; then
+
+	git clone https://github.com/noamraph/dreampie.git $HOME/Logiciels
+
+else
+
+	if [[ ! -d $HOME/Logiciels ]]; then
+		mkdir $HOME/Logiciels
+	fi
+		if [[ ! -d $HOME/Logiciels/Dreampie ]]; then
+		mkdir $HOME/Logiciels/Dreampie
+	fi
+	git clone https://github.com/noamraph/dreampie.git $HOME/Logiciels/Dreampie
+fi
+sudo chmod 777 -R $HOME/Logiciels/
+

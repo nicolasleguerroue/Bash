@@ -1,0 +1,322 @@
+#!/bin/bash
+
+#couleur de texte
+default="\\033[0m"
+black="\\033[30m"
+red="\\033[31m"
+green="\\033[32m"
+orange="\\033[33m"
+blue="\\033[34m"
+rose="\\033[35m"
+cyan="\\033[36m"
+white="\\033[37m"
+
+
+#arrière plan
+_black="\\033[40m"
+_red="\\033[41m"
+_green="\\033[42m"
+_yellow="\\033[43m"
+_blue="\\033[44m"
+_rose="\\033[45m"
+_cyan="\\033[46m"
+_white="\\033[47m"
+
+#mise en forme (gras....)
+_underligne_="\033[4m"
+_fond_="\033[7m"
+_barre_="\033[9m"
+_blink_="'\e[5;32;40m"
+_default_="\033[0m"
+
+
+analyse_prog() {
+
+	folder_name=`cat /bin/createc_filename` 
+
+
+			echo -e "Analyse des importations de bibliothèque dans le fichier prog.c"
+
+			for i in `ls $HOME/$folder_name | grep .h`; do
+
+				if [[ `grep "$i" $HOME/$folder_name/prog.c` != "" ]]; then #si similarité
+
+					if [[ `grep "$i" $HOME/$folder_name/prog.c | grep ">" $HOME/$folder_name/prog.c` != "" ]]; then #si contient > lib officiel
+
+						echo "$i est incluse dans prog.c"
+			
+
+				    else
+				    	echo "NON OFFICIEL $i"
+				    	
+
+				    
+					fi
+					
+				
+				else
+					echo "$i n'est pas incluse dans prog.c"
+				fi
+			done
+			echo -e "Analyse des importations de bibliothèque dans le fichier prog.c [$green --OK-- $default]"
+			echo -e "Compilation du projet..."
+			echo -e "Compilation du projet [$green --OK-- $default]"
+
+}
+
+generate() {
+
+			echo -e "Récupération des paramètres de l'utilitaire..."
+			folder_name=`cat /bin/createc_filename` 
+			echo -e "Récupération des paramètres de l'utilitaire [$green --OK-- $default]"
+			echo -e "Vérification  des paramètres de l'utilitaire..."
+			echo -e "Vérification  des paramètres de l'utilitaire [$green --OK-- $default] "
+
+
+			if [[ ! -f $HOME/$folder_name/GNUmakefile ]]; then
+				echo -e "Le fichier GNUmakefile n'existe pas..."
+				echo -e "Création du fichier GNUmakefile..."
+				cp $HOME/.Softwares-install/Lib/GNUmakefile $HOME/$folder_name
+				echo -e "Création du fichier GNUmakefile [$green --OK-- $default]"
+			fi
+
+			echo -e "Analyse de la fonction main()..."
+
+			if [[ -f $HOME/$folder_name/prog.c ]]; then
+				echo -e "Analyse de la fonction main() [$green --OK-- $default]"
+				echo -e "Le fichier prog.c existe déja [$green --OK-- $default]"
+				
+			else
+				echo -e "Le fichier prog.c n'existe pas [$orange --WARNING-- $default]"
+				echo -e "Création du fichier prog.c ..."
+
+				touch $HOME/$folder_name/prog.c
+
+				echo -e "//Auteur : "$USER >> $HOME/$folder_name/prog.c
+				echo -e "//Date : "$(date +%d)"/"$(date +%m)"/"$(date +%y) >> $HOME/$folder_name/prog.c
+				echo -e '//Inclusions des bibliothèques standards' >> $HOME/$folder_name/prog.c
+				echo -e '#include "'$1'.h"'>> $HOME/$folder_name/prog.c
+				echo -e '#include <stdlib.h>' >> $HOME/$folder_name/prog.c
+				echo -e '#include <stdint.h>' >> $HOME/$folder_name/prog.c
+				echo -e '#include <stdio.h>' >> $HOME/$folder_name/prog.c
+				echo -e '#include <stdbool.h>' >> $HOME/$folder_name/prog.c
+				echo -e '' >> $HOME/$folder_name/prog.c
+				echo -e 'int main(void){' >> $HOME/$folder_name/prog.c
+				echo -e '' >> $HOME/$folder_name/prog.c
+				echo -e '/* Code */' >> $HOME/$folder_name/prog.c
+				echo -e 'return 0;' >> $HOME/$folder_name/prog.c
+				echo -e '}//Fin main()' >> $HOME/$folder_name/prog.c
+
+				echo -e "Création du fichier prog.c [$green --OK-- $default]"
+
+			fi
+
+
+			if [[ -f $HOME/$folder_name/$1.h ]]; then
+				echo -e "La bibliothèque "$1" existe déja"
+				echo -e "Fermeture du programme"
+				exit
+			fi
+			echo -e "Création du fichier d'en-tête"
+
+			touch $HOME/$folder_name/$1.h 
+			
+			echo -e "//Auteur : "$USER >> $HOME/$folder_name/$1.h
+			echo -e "//Date : "$(date +%d)"/"$(date +%m)"/"$(date +%y) >> $HOME/$folder_name/$1.h
+			echo -e "//Fichier d'en-tête de la bibliothèque "$1 >> $HOME/$folder_name/$1.h
+
+			echo -e '//Inclusions des bibliothèques standards' >> $HOME/$folder_name/$1.h
+
+			echo -e '#ifndef '$1'_h' >> $HOME/$folder_name/$1.h
+			echo -e '#define '$1'_h' >> $HOME/$folder_name/$1.h
+			echo -e "#include <stdint.h> //Gestion des types spéciaux de variables " >> $HOME/$folder_name/$1.h
+			echo -e "#include <stdio.h> //Gestion des entrées/sorties" >> $HOME/$folder_name/$1.h
+			echo -e "#include <stdbool.h> //Gestion des booléens (true/false/" >> $HOME/$folder_name/$1.h
+			echo -e "" >> $HOME/$folder_name/$1.h
+			echo -e "int function(void); //Prototype d'exemple" >> $HOME/$folder_name/$1.h
+			echo -e "" >> $HOME/$folder_name/$1.h
+			echo -e "#endif"  >> $HOME/$folder_name/$1.h
+
+
+			echo -e "Création du fichier d'en-tête [$green --OK-- $default] "
+
+			if [[ -f $HOME/$folder_name/$1.c ]]; then
+
+				echo -e "La bibliothèque "$1" existe déja"
+				echo -e "Fermeture du programme"
+				exit
+			fi
+
+			echo -e "Création du fichier source "
+
+			touch $HOME/$folder_name/$1.c
+
+			echo -e "//Auteur : "$USER >> $HOME/$folder_name/$1.c
+			echo -e "//Date : $(date +%d)/$(date +%m)/$(date +%y)" >> $HOME/$folder_name/$1.c
+			echo -e "//Fichier de définition de la bibliothèque "$1 >> $HOME/$folder_name/$1.c
+
+			echo -e '//Inclusions des bibliothèques standards' >> $HOME/$folder_name/$1.c
+			echo -e '#include <stdlib.h>' >> $HOME/$folder_name/$1.c
+			echo -e '#include <stdint.h>' >> $HOME/$folder_name/$1.c
+			echo -e '#include <stdio.h>' >> $HOME/$folder_name/$1.c
+			echo -e '#include <stdbool.h>' >> $HOME/$folder_name/$1.c
+			echo -e "//Inclusions du fichier d'en-tête de la bibliothèqe "$1 >> $HOME/$folder_name/$1.c
+			echo -e '#include "'$1'.h"' >> $HOME/$folder_name/$1.c
+			echo -e '' >> $HOME/$folder_name/$1.c
+			echo -e 'int function(void){' >> $HOME/$folder_name/$1.c
+			echo -e '' >> $HOME/$folder_name/$1.c
+			echo -e '/* Code de la bibliothèque */' >> $HOME/$folder_name/$1.c
+			echo -e 'return 0;' >> $HOME/$folder_name/$1.c
+			echo -e '}//Fin function()' >> $HOME/$folder_name/$1.c
+
+
+		#	if [[ ! -f $HOME/$folder_name/makefile ]]; then
+				
+		#		echo -e "Le fichier makefile n'existe pas [$orange --WARNING-- $default]"
+		#		echo -e "Création du fichier makefile..."
+		#		echo -e $makefile > $HOME/$folder_name/makefile
+		#		echo -e "Création du fichier makefile [$green ----OK---- $default] "
+				#statements
+		#	fi
+
+}
+
+
+	if [[  ! -f /bin/_createc ]]; then
+
+	sudo echo -e "le programme createc n'est pas encore installé dans les dépots "
+	echo -e "par le groupe @Nicodrift_Software_Corporation"
+	echo -e $_underligne_"Souhaitez-vous l'installer ? (y/n) $default"
+	read -p ">>> " answer 
+
+	
+		if [[ $answer = "y" ]]; then
+
+			echo -e "Installation du programme..."
+			echo -e "Création du fichier dans le répertoire /bin"
+			sudo touch /bin/createc
+			sudo touch /bin/_createc
+			echo -e "Création du fichier dans le répertoire /bin : [$green --OK-- $default]"
+			echo -e "Récupérations des autorisations d'exécution..."
+			chmod 777 /bin/createc
+			echo -e "Récupérations des autorisations d'exécution : [$green --OK-- $default]"
+			echo -e "Récupérations du nom du programme..."
+			filename="createc"
+			cat $HOME/.Softwares-install/Lib/createc | while read line;do
+				echo $line >> /bin/createc
+			done 
+			if [[ "$filename" != "createc" ]]; then
+				echo -e "Récupérations du nom du programme : $filename [$red FAIL $default]"
+				echo -e "La méthode d'éxécution du programme est incorrecte;"
+				echo -e "Veuillez executer le programme de la manière suivante :"
+				echo -e "./createc"
+				echo -e "Fermeture du programme"
+				exit
+			fi
+			echo -e "Récupérations du nom du programme : "$filename" [$green --OK-- $default]"
+
+			echo -e $_underligne_"Désirez-vous créer un répertoire de travail ? (y/n) $default"
+			echo -e $green"En cas d'acceptation (saisir 'y'), $default tous vos fichiers crées avec l'utilitaire serons sauvegardés dans ce répertoire."
+			echo -e $red"En cas de refus (saisir 'n') $default, tous les programmes seront enregistrés dans votre espace personnel"
+			read -p ">>> " answer 		
+
+			if [[ $answer = "y" ]]; then
+
+				echo -e $_underligne_"Veuillez préciser le nom du dossier [caractères ASCII] $default"
+				read -p ">>> " answer 
+				if [[ ! -d $HOME/$answer ]]; then
+					echo -e "Création du dossier de travail..."
+					mkdir $HOME/$answer
+					chmod 777 -R $HOME/$answer
+					echo -e "Création du dossier de travail : "$HOME/$answer" [$green --OK-- $default]"
+				else
+					echo -e "Le dossier existe déja"
+					echo -e "Validation du dossier de travail [$green --OK-- $default]"
+				fi
+				
+				
+				echo -e "Sauvegarde du nom du dossier de travail"
+				touch /bin/createc_filename 
+				echo -e "Récupérations des autorisations d'exécution..."
+				chmod 777 /bin/createc_filename
+				echo -e "Récupérations des autorisations d'exécution : [$green --OK-- $default]"
+				echo $answer > /bin/createc_filename 
+				echo -e "Sauvegarde du nom du dossier de travail [$green --OK-- $default]"
+			
+
+			else
+
+				echo -e "Vous souhaitez donc enregistrer les fichiers dans votre espace personnel"
+
+			fi
+
+			echo -e "Fin de l'installation"
+			echo -e "Pour lancer un nouveau projet C, il vous suffit de saisir :"
+			echo -e "createc nom_du_projet" 
+			echo -e "Par défaut, tous les projets serons sauvegardés"
+			echo -e "dans votre répertoire choisis lors de l'installation de l'utilitaire" 
+			echo -e "pour complier le projet, il suffit de saisir la commande createc" 
+			echo -e "Fermeture du programme" 
+
+			exit
+		elif [[ $answer = "n" ]]; then
+			echo -e "Fermeture du programme"
+			exit
+		else
+			echo -e "Argument inattendu [$orange --WARNING-- $default]"
+			echo -e "Fermeture du programme"
+			exit
+		fi
+
+	else  #Fichier installé
+		
+		# if [[ "$UID" -ne "0" ]]; then
+		# 	echo "Bonjour $USER" 
+
+		if [[ $1 == "" ]]; then
+			analyse_prog
+			echo -e "Fin du programme"
+			exit
+		fi
+
+		folder_name=`cat /bin/createc_filename` 
+
+		if [[ -d $HOME/$folder_name ]]; then
+
+			generate $1
+			analyse_prog
+
+		else #Le dossier n'existe pas ...
+
+			echo "Le dossier "$folder_name" n'existe plus : Souhaitez-vous le recréer ? (y/n)"
+			read -p ">>> " answer 
+
+			if [[ "$answer" = "y" ]]; then
+				mkdir $HOME/$folder_name
+				generate $1
+				analyse_prog
+			else 
+				echo -e "Fin du programme, la génération a été abandonnée."
+				exit
+			fi
+
+
+		fi
+
+
+
+
+		echo -e "Fin du programme, les fichiers ont été créer avec succès"
+
+		#subl $HOME/$1.c && subl $HOME/$1.h && subl $HOME/$1_main.c
+
+		# if [[ `dpkg -I | grep subl` ]]; then
+		# 	#statements
+		# fi
+
+	fi
+
+
+
+
+

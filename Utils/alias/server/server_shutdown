@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -e "Extinction du serveur $1..."
+sudo ssh -t nico@arduino56.hopto.org "sudo shutdown now"
+echo -e "Extinction du serveur $1 : OK"

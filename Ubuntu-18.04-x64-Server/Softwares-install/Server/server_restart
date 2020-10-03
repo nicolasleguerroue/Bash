@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo ssh -t  nico@arduino56.hopto.org "sudo reboot"
+#le -t alloue un pseudo terminal 
+

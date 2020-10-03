@@ -1,0 +1,5 @@
+#!/bin/bash
+echo -e "Redémarrage du serveur $1..."
+sudo ssh -t $1 "sudo reboot"
+echo -e "Redémarrage du serveur $1 : OK"
+

@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo rsync -avh -pdgz   --info=progress1 --delete-before --stats /var/www/html/ nico@arduino56.hopto.org:/var/www/html

@@ -1,0 +1,59 @@
+.\" Manuel pour la bilbiothèque Zenity
+.TH Zenity 7 "20/10/19" "Version 1.0" "Manuel Zenity"
+
+.SH NOM
+.B Zenity
+permet de génerer des fenetres de dialogues
+.SH TYPE
+Bibliothèque Bash
+
+.SH DESCRIPTION
+Zenity vous permet d\'afficher : 
+.TP
+- des boites de messages : Print [message]
+.TP
+- des barres de progression : ProgressBar [message] [temps_total] [pas]
+.TP
+- Des entrée de texte : Entry : affiche l\'entrée  
+.TP
+-Des questions : Question [texte] (ou ou non) 
+.TP
+SetTextList [texte] : définit le texte pour une Liste  
+SetColumnsList [colonne1] [colonne2] ... : définit les colonnes de la Liste
+List [var1] var2 [var3] : définit le contenu de la liste  
+
+SetTextCheckBox [texte] : définit le texte pour une CheckBox  
+SetColumnsCheckBox [colonne1] [colonne2] ... : définit les colonnes de la CheckBox
+CheckBox [var1] var2 [var3] : définit le contenu de la CheckBox
+
+
+SetTextRadio [texte] : définit le texte pour une Radio  
+SetColumnsRadio [colonne1] [colonne2] ... : définit les colonnes de la Radio
+Radio [var1] var2 [var3] : définit le contenu de la Radio   -> La 1ere variable doit etre TRUE ou FALSE
+
+
+.SH OPTIONS
+SetTitle [Titre]  : définit le titre de la fenetre  (str)
+.TP
+SetSize [width] [height] : Définit la taille de la boite de dialogue (int, int)
+.TP
+NoBlockProgressBar : [void] :  Passe à la suite lorsque la barre de progression est terminée 
+.TP
+BlockProgressBar [void] : Ne passe pas à la suite lorsque la barre de progression est terminée  
+.TP
+DisplayZenity [void] :  attend une connexion web 
+.TP
+SetDefaultEntry [texte] : définit le texte par défaut  (str)
+.TP
+SetTextEntry [texte] ; définit le texte d\'une entrée (str)
+
+.SH VOIR AUSSI
+source
+.SH ERREURS \n
+Pas de bug connu
+.SH AUTHOR \n
+Nicolas Le Guerroué - nicolasleguerroue@gmail.com
+
+
+
+	

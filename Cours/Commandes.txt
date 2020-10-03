@@ -1,0 +1,2 @@
+do-release-upgrade --check-dist-upgrade-only -> vérifie une nouvelle version
+do-release-upgrade --> met à jour le systeme

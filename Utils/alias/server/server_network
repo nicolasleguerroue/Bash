@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -e "Analyse du réseau du serveur $1 ..."
+sudo ssh -t $1 "nmap -sP $2 | grep '192.168'"
+echo -e "Analyse du réseau du serveur $1 : OK"
